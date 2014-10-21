@@ -1,0 +1,10 @@
+[
+	{
+		"errnum": 1000,
+		"errstr": "Error 1000"
+	},
+	{
+		"errnum": 2000,
+		"errstr": "Error 2000"
+	}
+]
