@@ -1,3 +1,11 @@
+/* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
+* File Name: EulerProject34.cpp
+* Purpose:
+* Creation Date: 21-10-2014
+* Last Modified: Tue 21 Oct 2014 01:09:41 PM KST
+* Created By: Seung-Eun Yang
+_._._._._._._._._._._._._._._._._._._._._.*/
+
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>

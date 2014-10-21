@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -O3
 
-OUT = 69
+OUT = EulerProject69
 
 all: $(OUT)
 
