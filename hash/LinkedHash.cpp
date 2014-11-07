@@ -48,6 +48,7 @@ class HashMap {
 				table[i] = NULL;
 		}
 
+		// djb2 hash function
 		unsigned long hashFunc(const char *str) {
 			unsigned long hash = 5381;
 			int c;
@@ -60,7 +61,6 @@ class HashMap {
 
 		int get(string key) {
 			int hash = static_cast<int>((hashFunc(key.c_str()) % TABLE_SIZE));
-			cout << "Hash: " << hash << endl;
 			if (table[hash] == NULL)
 				return -1;
 			else {
@@ -82,10 +82,10 @@ class HashMap {
 				LinkedHashEntry *entry = table[hash];
 				while (entry->getNext() != NULL)
 					entry = entry->getNext();
-				if (entry->getKey() == key)
-					entry->setValue(value);
-				else
-					entry->setNext(new LinkedHashEntry(key, value));
+				//if (entry->getKey() == key)
+				//entry->setValue(value);
+				//else
+				entry->setNext(new LinkedHashEntry(key, value));
 			}
 		}
 
@@ -131,7 +131,6 @@ int main() {
 	HashMap map;
 
 	map.put("A10", 10);
-	
 	cout << map.get("A10") << endl;
 
 	return 0;
