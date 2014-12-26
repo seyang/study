@@ -11,9 +11,10 @@ PThreadLock::PThreadLock(pthread_mutex_t *_mtx, pthread_mutexattr_t *_mtx_attr) 
 
 	memset(&chkMtx, 0x00, sizeof(pthread_mutex_t));
 	setComplete = false;
+	printf("PThreadLock Constructor\n");
 }
 
-int PThreadLock::getAttrInfo() {
+int PThreadLock::initOpen() {
 	int chkAttr;
 
 	// Check if mutex is set
@@ -94,12 +95,12 @@ int PThreadLock::setAttrRobust() {
 	return 0;
 }
 
-int PThreadLock::setMutexInit() {
+int PThreadLock::initMutex() {
 	int ret;
 	pthread_mutex_t chkMtx;
 	memset(&chkMtx, 0x00, sizeof(pthread_mutex_t));
 	if (memcmp(tmpMutex, &chkMtx, sizeof(pthread_mutex_t)) != 0) {
-		printf("[ERR] Mutex is already itialized\n");
+		printf("[ERR] Mutex is already initialized\n");
 		return -1;
 	}
 
@@ -116,6 +117,7 @@ int PThreadLock::setMutexInit() {
 void PThreadLock::lock() {
 	int ret;
 	if (!setComplete) {
+		printf("[ERR] Lock must be initialized\n");
 		return;
 	}
 	if ((ret = pthread_mutex_lock(tmpMutex)) != 0) {
@@ -130,24 +132,22 @@ void PThreadLock::lock() {
 
 void PThreadLock::unlock() {
 	if (!setComplete) {
+		printf("[ERR] Lock must be initialized\n");
 		return;
 	}
 	pthread_mutex_unlock(tmpMutex);
 }
 
 
-int PTSLock::initForShared() {
+int PTLockS::initForShm() {
 	int ret;
-	if ((ret = setAttrNormal()) != 0) {
-		return ret;
-	}
 	if ((ret = setAttrShm()) != 0) {
 		return ret;
 	}
 	if ((ret = setAttrRobust()) != 0) {
 		return ret;
 	}
-	if ((ret = setMutexInit()) != 0) {
+	if ((ret = initMutex()) != 0) {
 		return ret;
 	}
 	return 0;

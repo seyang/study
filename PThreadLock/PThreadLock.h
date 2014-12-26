@@ -7,7 +7,8 @@
 #include <string.h>
 
 class PThreadLock {
-	protected:
+	//protected:
+	private:
 		pthread_mutex_t *tmpMutex;
 		pthread_mutexattr_t *tmpAttr;
 		pthread_mutex_t chkMtx;
@@ -21,19 +22,20 @@ class PThreadLock {
 		int setAttrErrChk();
 		int setAttrShm();
 		int setAttrRobust();
-		int setMutexInit();
-		int getAttrInfo();
+		int initMutex();
+		int initOpen();
 		void lock();
 		void unlock();
 };
 
-class PTSLock : public PThreadLock {
-	//private:
+class PTLockS : public PThreadLock {
 	public:
-		//PTSharedLock();
-		PTSLock(pthread_mutex_t *_mtx, pthread_mutexattr_t *_mtx_attr)
-			: PThreadLock(_mtx, _mtx_attr) {}
-		int initForShared();
+		PTLockS(pthread_mutex_t *_mtx, pthread_mutexattr_t *_mtx_attr)
+			: PThreadLock(_mtx, _mtx_attr) { }
+		PTLockS(char *_shm_name, pthread_mutex_t *_mtx, pthread_mutexattr_t *_mtx_attr) {
+				printf("PTLockS Constructor\n");
+			}
+		int initForShm();
 	
 };
 

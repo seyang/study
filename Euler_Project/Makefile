@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -O2 -g -Wall
 
-OUT = EulerProject14
+OUT = EulerProject24
 
 all: $(OUT)
 

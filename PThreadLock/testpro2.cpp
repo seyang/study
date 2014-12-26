@@ -1,9 +1,7 @@
 #include "testpro.h"
 
 shm_struct_t *g_shm;
-pthread_mutexattr_t mtx_attr;
-pthread_condattr_t cond_attr;
-PTSLock *sharedLock;
+PTLockS *sharedLock;
 
 int shm_init() {
 	int fd;
@@ -22,8 +20,8 @@ int shm_init() {
 				perror("mmap");
 				return -1;
 			}
-			sharedLock = new PTSLock(&g_shm->mtx, &g_shm->mtx_attr);
-			if (sharedLock->getAttrInfo() == -1) {
+			sharedLock = new PTLockS(&g_shm->mtx, &g_shm->mtx_attr);
+			if (sharedLock->initOpen() == -1) {
 				return -1;
 			}
 			close(fd);
@@ -52,8 +50,8 @@ int shm_init() {
 	g_shm->i = 0;
 	g_shm->j = 0;
 
-	sharedLock = new PTSLock(&g_shm->mtx, &g_shm->mtx_attr);
-	sharedLock->initForShared();
+	sharedLock = new PTLockS(&g_shm->mtx, &g_shm->mtx_attr);
+	sharedLock->initForShm();
 
 	return ret;
 }
