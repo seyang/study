@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <unistd.h>
 
 int main() {
-	int max = -1;
-	int temp;
-	int cnt;
-	for (int i=1; i<1000000; i++) {
+	long max = -1;
+	long temp;
+	long cnt;
+	long collatz = 0;
+	for (long i=1; i<1000000; i++) {
 		temp = i;
 		cnt = 1;
 		while (temp != 1) {
@@ -18,8 +20,10 @@ int main() {
 
 		if (cnt > max) {
 			max = cnt;
+			collatz = i;
 		}
 	}
-	printf("max collatz num: %d\n", max);
+	printf("max collatz chain: %ld\n", max);
+	printf("max collatz num: %ld\n", collatz);
 	return 0;
 }
