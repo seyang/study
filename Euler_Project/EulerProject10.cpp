@@ -2,7 +2,6 @@
 #include <unistd.h>
 
 #define MAX_NUM 2000000
-//#define MAX_NUM 10
 
 int getPrime(int primeSet[]) {
 	int _tmpSet[MAX_NUM];

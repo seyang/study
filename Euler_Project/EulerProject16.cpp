@@ -1,11 +1,3 @@
-/* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
-* File Name: EulerProject16.cpp
-* Purpose: Euler Project Num.16
-* Creation Date: 21-10-2014
-* Last Modified: Tue 21 Oct 2014 01:09:11 PM KST
-* Created By: Seung-Eun Yang
-_._._._._._._._._._._._._._._._._._._._._.*/
-
 #include <cstdio>
 #include <cstring>
 

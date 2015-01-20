@@ -1,11 +1,3 @@
-/* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
-* File Name: EulerProject39.cpp
-* Purpose:
-* Creation Date: 21-10-2014
-* Last Modified: Tue 21 Oct 2014 01:10:04 PM KST
-* Created By: Seung-Eun Yang
-_._._._._._._._._._._._._._._._._._._._._.*/
-
 #include <stdio.h>
 #include <math.h>
 

@@ -6,6 +6,7 @@ def factors(n):
 
 num = 1
 t_num = 0 # triangle number
+
 while 1:
 	t_num += num
 	num += 1
